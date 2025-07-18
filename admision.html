@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Globaltec</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .logo img {
+           height: auto;             /* Mantiene proporciones naturales */
+           max-height: 80px;         /* Límite de altura */
+           width: auto;              /* Mantiene el ancho proporcional */
+           max-width: 160px;         /* Ajusta según tu diseño */
+           object-fit: contain;      /* Asegura que no se deforme */
+           display: block;           /* Elimina espacios extra debajo */
+        }
+        /* Navigation */
+        .nav {
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            padding: 0;
+            position: relative;
+        }
+
+        .nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+
+        .nav-container {
+            position: relative;
+            z-index: 2;
+            padding: 20px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 10px 0;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-icon {
+            color: #ff5722;
+        }
+
+        .phone-icon {
+            color: #4caf50;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 30px;
+            height: 30px;
+            background: #4267B2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .nav-menu li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            color: #333 !important;
+            padding: 10px 15px;
+            display: block;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .dropdown a:hover {
+            background: #f5f5f5;
+            color: #2c5aa0 !important;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+        /* cuerpo */
+        .cuerpo-pagina {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .encabezado-principal {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .contenedor-navegacion {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .titulo-imagen {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .titulo-presentacion {
+            font-size: 2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .seccion-contenido {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .contenedor-presentacion {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .caja-imagen {
+            background-color: #d0d0d0;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            color: #666;
+            font-weight: bold;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contenido-texto {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .parrafo-descripcion {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .contenedor-tabla {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .tabla-datos {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .fila-tabla {
+            border-bottom: 1px solid #eee;
+        }
+
+        .fila-tabla:last-child {
+            border-bottom: none;
+        }
+
+        .celda-descripcion {
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #eee;
+            width: 70%;
+        }
+
+        .celda-numero {
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #4a90e2;
+            width: 30%;
+        }
+
+        .seccion-inscripcion {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .titulo-inscripcion {
+            color: #4a90e2;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .descripcion-inscripcion {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .lista-acordeon {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .elemento-acordeon {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .encabezado-acordeon {
+            background-color: #f8f9fa;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .encabezado-acordeon:hover {
+            background-color: #e9ecef;
+        }
+
+        .texto-acordeon {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .icono-acordeon {
+            font-size: 1.2rem;
+            color: #4a90e2;
+            transition: transform 0.3s ease;
+        }
+
+        .contenido-acordeon {
+            padding: 20px;
+            background-color: white;
+            display: none;
+            border-left: 3px solid #4a90e2;
+        }
+
+        .contenido-acordeon.activo {
+            display: block;
+        }
+
+        .encabezado-acordeon.activo .icono-acordeon {
+            transform: rotate(45deg);
+        }
+
+        @media (max-width: 768px) {
+            .contenedor-presentacion {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .contenedor-navegacion {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .titulo-presentacion {
+                font-size: 1.5rem;
+            }
+            
+            .seccion-inscripcion {
+                padding: 20px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-placeholder {
+            width: 200px;
+            height: 80px;
+            background: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #4a90e2;
+        }
+
+        .social-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-footer a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .social-footer a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-footer .facebook {
+            background: #4267B2;
+        }
+
+        .social-footer .tiktok {
+            background: #000;
+        }
+
+        .social-footer .youtube {
+            background: #FF0000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 14px;
+        }
+
+
+        </style>
+
+        <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="logo">
+                      <img src="img/logo.jpeg" alt="Globaltec">
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon location-icon">📍</span>
+                            <span> Jr. Córdova 514 (frente a la  Capilla de Cruz Verde)</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon phone-icon">💬</span>
+                            <span>955 630 057</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/GlobalTecHuanta" title="Facebook">f</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>                       
+                    <li><a href="nivelesEdu.html">Niveles educativos</a></li>
+                    <li><a href="admision.html">Admisión</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- cuerpo -->
+     <body class="cuerpo-pagina">
+    <header class="encabezado-principal">
+        <div class="contenedor-navegacion">
+            <h1 class="titulo-imagen">Imagen</h1>
+            <h2 class="titulo-presentacion">Presentación</h2>
+        </div>
+    </header>
+
+    <main class="seccion-contenido">
+        <div class="contenedor-presentacion">
+            <div class="caja-imagen">
+                Lorem Ipsum
+            </div>
+            <div class="contenido-texto">
+                <p class="parrafo-descripcion">
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit ipsum molestie, ut dignissim dictumst lacus suscipit porttitor hendrerit eleifend. Dapibus quis lectus tortor ante sem vitae odio sed mauris et, vitae semper tempor mauris turpis maximus mauris imperdiet tellus congue lorem, elementum cursus dignissim ultricies venenatis porttitor.
+                </p>
+                <p class="parrafo-descripcion">
+                    Ridiculus socis ultrices ac, tempor vestibulum nam donec vivamus augue suscipit luctus suscipit leo at consectetur quam porttitor euismod hendrerit.
+                </p>
+            </div>
+        </div>
+
+        <div class="contenedor-tabla">
+            <table class="tabla-datos">
+                <tr class="fila-tabla">
+                    <td class="celda-descripcion">Lorem ipsum dolor sit amet consectetur adipiscing elit ipsum molestie</td>
+                    <td class="celda-numero">100</td>
+                </tr>
+                <tr class="fila-tabla">
+                    <td class="celda-descripcion">Lorem ipsum dolor sit amet consectetur adipiscing elit ipsum molestie</td>
+                    <td class="celda-numero">100</td>
+                </tr>
+                <tr class="fila-tabla">
+                    <td class="celda-descripcion">Lorem ipsum dolor sit amet consectetur adipiscing elit ipsum molestie</td>
+                    <td class="celda-numero">100</td>
+                </tr>
+                <tr class="fila-tabla">
+                    <td class="celda-descripcion">Lorem ipsum dolor sit amet consectetur adipiscing elit ipsum molestie</td>
+                    <td class="celda-numero">100</td>
+                </tr>
+                <tr class="fila-tabla">
+                    <td class="celda-descripcion">Lorem ipsum dolor sit amet consectetur adipiscing elit ipsum molestie</td>
+                    <td class="celda-numero">100</td>
+                </tr>
+            </table>
+        </div>
+
+        <section class="seccion-inscripcion">
+            <h2 class="titulo-inscripcion">Proceso de Inscripción (Matrícula)</h2>
+            <p class="descripcion-inscripcion">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit odio, orci varius pretium lacus nunc a neque. Tristique risus mauris pellentesque ultricies auctor gravida dui at lacus molestie, suscipit odio eifend lacus cras dui consequat lorem nam maximus eu tortor.
+            </p>
+
+            <div class="lista-acordeon">
+                <div class="elemento-acordeon">
+                    <div class="encabezado-acordeon" onclick="alternarAcordeon(this)">
+                        <span class="texto-acordeon">Paso 1: Documentación Requerida</span>
+                        <span class="icono-acordeon">+</span>
+                    </div>
+                    <div class="contenido-acordeon">
+                        <p>Aquí encontrarás toda la información sobre los documentos necesarios para completar tu inscripción. Incluye certificados, identificación personal y documentos académicos previos.</p>
+                    </div>
+                </div>
+
+                <div class="elemento-acordeon">
+                    <div class="encabezado-acordeon" onclick="alternarAcordeon(this)">
+                        <span class="texto-acordeon">Paso 2: Formulario de Inscripción</span>
+                        <span class="icono-acordeon">+</span>
+                    </div>
+                    <div class="contenido-acordeon">
+                        <p>Completa el formulario de inscripción con tus datos personales, académicos y de contacto. Asegúrate de verificar toda la información antes de enviar.</p>
+                    </div>
+                </div>
+
+                <div class="elemento-acordeon">
+                    <div class="encabezado-acordeon" onclick="alternarAcordeon(this)">
+                        <span class="texto-acordeon">Paso 3: Pago de Matrícula</span>
+                        <span class="icono-acordeon">+</span>
+                    </div>
+                    <div class="contenido-acordeon">
+                        <p>Realiza el pago de la matrícula a través de los medios disponibles. Conserva el comprobante de pago para futuras referencias.</p>
+                    </div>
+                </div>
+
+                <div class="elemento-acordeon">
+                    <div class="encabezado-acordeon" onclick="alternarAcordeon(this)">
+                        <span class="texto-acordeon">Paso 4: Confirmación y Horarios</span>
+                        <span class="icono-acordeon">+</span>
+                    </div>
+                    <div class="contenido-acordeon">
+                        <p>Recibe la confirmación de tu inscripción y consulta los horarios de clases asignados. Revisa cuidadosamente la información de inicio de actividades.</p>
+                    </div>
+                </div>
+
+                <div class="elemento-acordeon">
+                    <div class="encabezado-acordeon" onclick="alternarAcordeon(this)">
+                        <span class="texto-acordeon">Paso 5: Orientación Estudiantil</span>
+                        <span class="icono-acordeon">+</span>
+                    </div>
+                    <div class="contenido-acordeon">
+                        <p>Participa en la sesión de orientación para nuevos estudiantes. Conoce las instalaciones, servicios disponibles y protocolos académicos.</p>
+                    </div>
+                </div>
+
+                <div class="elemento-acordeon">
+                    <div class="encabezado-acordeon" onclick="alternarAcordeon(this)">
+                        <span class="texto-acordeon">Paso 6: Inicio de Clases</span>
+                        <span class="icono-acordeon">+</span>
+                    </div>
+                    <div class="contenido-acordeon">
+                        <p>Comienza tu experiencia académica. Asiste puntualmente a todas las clases y mantente al día con las actividades y evaluaciones programadas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function alternarAcordeon(elemento) {
+            const contenido = elemento.nextElementSibling;
+            const icono = elemento.querySelector('.icono-acordeon');
+            
+            // Cerrar todos los otros elementos del acordeón
+            const todosLosElementos = document.querySelectorAll('.elemento-acordeon');
+            todosLosElementos.forEach(item => {
+                const otroContenido = item.querySelector('.contenido-acordeon');
+                const otroEncabezado = item.querySelector('.encabezado-acordeon');
+                const otroIcono = item.querySelector('.icono-acordeon');
+                
+                if (otroContenido !== contenido) {
+                    otroContenido.classList.remove('activo');
+                    otroEncabezado.classList.remove('activo');
+                    otroIcono.textContent = '+';
+                }
+            });
+            
+            // Alternar el elemento actual
+            if (contenido.classList.contains('activo')) {
+                contenido.classList.remove('activo');
+                elemento.classList.remove('activo');
+                icono.textContent = '+';
+            } else {
+                contenido.classList.add('activo');
+                elemento.classList.add('activo');
+                icono.textContent = '−';
+            }
+        }
+    </script>
+</body>
+     <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-placeholder">
+                        <img src="img/logo.jpeg" alt="globaltec">
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Información de contacto</h3>
+                    <div><strong>Ubicanos:</strong> Jr. Córdova 514 (frente a la  Capilla de Cruz Verde)</div>
+                    <div><strong>Teléfono:</strong>  955 630 057</div>
+                    <div><strong>Correo:</strong> aulavirtual@globaltechuanta.edu.pe</div>
+                    <div><strong>Horarios de atención:</strong></div>
+                    <div>Lunes a viernes:</div>
+                    <div>7:30am - 1:00pm</div>
+                    <div>3:00pm - 6:00pm</div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#admision">Admisión</a></li>
+                        <li><a href="#niveles">Niveles educativos</a></li>
+                        <li><a href="#actividades">Noticias o actividades</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                    <div class="social-footer">
+                        <a href="#" class="facebook" title="Facebook">f</a>
+                        <a href="#" class="tiktok" title="TikTok">♪</a>
+                        <a href="#" class="youtube" title="YouTube">▶</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Globaltec. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+</html>
+             

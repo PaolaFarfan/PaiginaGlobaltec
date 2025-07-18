@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Globaltec</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .logo img {
+           height: auto;             /* Mantiene proporciones naturales */
+           max-height: 80px;         /* Límite de altura */
+           width: auto;              /* Mantiene el ancho proporcional */
+           max-width: 160px;         /* Ajusta según tu diseño */
+           object-fit: contain;      /* Asegura que no se deforme */
+           display: block;           /* Elimina espacios extra debajo */
+        }
+        /* Navigation */
+        .nav {
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            padding: 0;
+            position: relative;
+        }
+
+        .nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+
+        .nav-container {
+            position: relative;
+            z-index: 2;
+            padding: 20px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 10px 0;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-icon {
+            color: #ff5722;
+        }
+
+        .phone-icon {
+            color: #4caf50;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 30px;
+            height: 30px;
+            background: #4267B2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .nav-menu li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            color: #333 !important;
+            padding: 10px 15px;
+            display: block;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .dropdown a:hover {
+            background: #f5f5f5;
+            color: #2c5aa0 !important;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        /* cuerpo */
+         .cuerpo {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .encabezado {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+        }
+
+        .titulo-principal {
+            font-size: 2.5em;
+            color: #007bff;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .subtitulo {
+            font-size: 1.2em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .descripcion-principal {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        .seccion {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 30px;
+        }
+
+        .seccion:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .contenido-texto {
+            flex: 1;
+        }
+
+        .titulo-seccion {
+            font-size: 1.8em;
+            color: #007bff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .texto-seccion {
+            font-size: 1em;
+            line-height: 1.7;
+            color: #555;
+            text-align: justify;
+        }
+
+        .contenedor-imagen {
+            flex: 0 0 300px;
+            height: 200px;
+            background-color: #888;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .seccion {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .contenedor-imagen {
+                flex: none;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .titulo-principal {
+                font-size: 2em;
+            }
+
+            .contenedor {
+                padding: 20px;
+            }
+        }
+
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-placeholder {
+            width: 200px;
+            height: 80px;
+            background: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #4a90e2;
+        }
+
+        .social-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-footer a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .social-footer a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-footer .facebook {
+            background: #4267B2;
+        }
+
+        .social-footer .tiktok {
+            background: #000;
+        }
+
+        .social-footer .youtube {
+            background: #FF0000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 14px;
+        }
+
+
+        </style>
+
+        <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="logo">
+                      <img src="img/logo.jpeg" alt="Globaltec">
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon location-icon">📍</span>
+                            <span> Jr. Córdova 514 (frente a la  Capilla de Cruz Verde)</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon phone-icon">💬</span>
+                            <span>955 630 057</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/GlobalTecHuanta" title="Facebook">f</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>                       
+                    <li><a href="nivelesEdu.html">Niveles educativos</a></li>
+                    <li><a href="admision.html">Admisión</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- cuerpo -->
+     <body class="cuerpo">
+    <div class="contenedor">
+        <header class="encabezado">
+            <h1 class="titulo-principal">Nivel Inicial</h1>
+        </header>
+
+        <p class="descripcion-principal">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+
+        <div class="seccion">
+            <div class="contenido-texto">
+                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <p class="texto-seccion">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="contenedor-imagen">
+                Imagen
+            </div>
+        </div>
+
+        <div class="seccion">
+            <div class="contenido-texto">
+                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <p class="texto-seccion">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="contenedor-imagen">
+                Imagen
+            </div>
+        </div>
+
+        <div class="seccion">
+            <div class="contenido-texto">
+                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <p class="texto-seccion">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="contenedor-imagen">
+                Imagen
+            </div>
+        </div>
+         <header class="encabezado">
+            <h1 class="titulo-principal">Nivel Primaria</h1>
+        </header>
+
+        <p class="descripcion-principal">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+
+        <div class="seccion">
+            <div class="contenido-texto">
+                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <p class="texto-seccion">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="contenedor-imagen">
+                Imagen
+            </div>
+        </div>
+        <div class="seccion">
+            <div class="contenido-texto">
+                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <p class="texto-seccion">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="contenedor-imagen">
+                Imagen
+            </div>
+        </div>
+
+        <header class="encabezado">
+            <h1 class="titulo-principal">Nivel Secundario</h1>
+        </header>
+
+        <p class="descripcion-principal">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+
+        <div class="seccion">
+            <div class="contenido-texto">
+                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <p class="texto-seccion">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="contenedor-imagen">
+                Imagen
+            </div>
+        </div>
+        <div class="seccion">
+            <div class="contenido-texto">
+                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <p class="texto-seccion">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="contenedor-imagen">
+                Imagen
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+
+
+     <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-placeholder">
+                        <img src="img/logo.jpeg" alt="globaltec">
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Información de contacto</h3>
+                    <div><strong>Ubicanos:</strong> Jr. Córdova 514 (frente a la  Capilla de Cruz Verde)</div>
+                    <div><strong>Teléfono:</strong>  955 630 057</div>
+                    <div><strong>Correo:</strong> aulavirtual@globaltechuanta.edu.pe</div>
+                    <div><strong>Horarios de atención:</strong></div>
+                    <div>Lunes a viernes:</div>
+                    <div>7:30am - 1:00pm</div>
+                    <div>3:00pm - 6:00pm</div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#admision">Admisión</a></li>
+                        <li><a href="#niveles">Niveles educativos</a></li>
+                        <li><a href="#actividades">Noticias o actividades</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                    <div class="social-footer">
+                        <a href="#" class="facebook" title="Facebook">f</a>
+                        <a href="#" class="tiktok" title="TikTok">♪</a>
+                        <a href="#" class="youtube" title="YouTube">▶</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Globaltec. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+</html>
+             

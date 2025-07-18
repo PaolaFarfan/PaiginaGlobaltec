@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Globaltec</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .logo img {
+           height: auto;             /* Mantiene proporciones naturales */
+           max-height: 80px;         /* Límite de altura */
+           width: auto;              /* Mantiene el ancho proporcional */
+           max-width: 160px;         /* Ajusta según tu diseño */
+           object-fit: contain;      /* Asegura que no se deforme */
+           display: block;           /* Elimina espacios extra debajo */
+        }
+        /* Navigation */
+        .nav {
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            padding: 0;
+            position: relative;
+        }
+
+        .nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+
+        .nav-container {
+            position: relative;
+            z-index: 2;
+            padding: 20px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 10px 0;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-icon {
+            color: #ff5722;
+        }
+
+        .phone-icon {
+            color: #4caf50;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 30px;
+            height: 30px;
+            background: #4267B2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .nav-menu li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            color: #333 !important;
+            padding: 10px 15px;
+            display: block;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .dropdown a:hover {
+            background: #f5f5f5;
+            color: #2c5aa0 !important;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        /* cuerpoooooooooooo */
+         /* Header */
+        .header1 {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .header1-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 300px;
+            align-items: center;
+        }
+
+        
+
+        .header1-image {
+          width: 100vw; /* 100% del ancho de la ventana */
+         height: 600px; /* o lo que necesites */
+         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+         display: flex;
+        align-items: center;
+         justify-content: center;
+        position: relative;
+        overflow: hidden;
+}
+
+
+
+
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header1-text {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .header1-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .header1-text p {
+            color: #666;
+            text-align: justify;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 500;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .content-section:hover .section-title::before {
+            left: 100%;
+        }
+
+        .section-content {
+            padding: 2rem;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        /* Video Section */
+        .video-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .video-container {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            margin: 2rem 0;
+        }
+
+        .video-container:hover {
+            transform: scale(1.02);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+        }
+
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-placeholder:hover::before {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-button:hover {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid #667eea;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+
+        /* Two Column Layout */
+        .two-column-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 2rem 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .image-column {
+            background: linear-gradient(135deg, #8B9DC3 0%, #667eea 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-column::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 25s linear infinite;
+        }
+
+        .text-column {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-column h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .text-column h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .text-column p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content,
+            .main-content,
+            .two-column-section {
+                grid-template-columns: 1fr;
+            }
+
+            .header-text h1 {
+                font-size: 2rem;
+            }
+
+            .text-column h2 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .section-content,
+            .text-column {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-placeholder {
+            width: 200px;
+            height: 80px;
+            background: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #4a90e2;
+        }
+
+        .social-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-footer a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .social-footer a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-footer .facebook {
+            background: #4267B2;
+        }
+
+        .social-footer .tiktok {
+            background: #000;
+        }
+
+        .social-footer .youtube {
+            background: #FF0000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 14px;
+        }
+
+
+        </style>
+
+        <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="logo">
+                      <img src="img/logo.jpeg" alt="Globaltec">
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon location-icon">📍</span>
+                            <span> Jr. Córdova 514 (frente a la  Capilla de Cruz Verde)</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon phone-icon">💬</span>
+                            <span>955 630 057</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/GlobalTecHuanta" title="Facebook">f</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>                       
+                    <li><a href="nivelesEdu.html">Niveles educativos</a></li>
+                    <li><a href="admision.html">Admisión</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- cuerpooooooooooooooooo -->
+
+    <header>
+            <div class="header1-content">
+                <div class="header1-image">
+                <img src="img/nosotros.jpeg" alt="Globaltec"></div>
+                </div>
+                <div class="header1-text">
+                    <h1>Presentación</h1>
+                    <p>🎓 Presentación Institucional - Colegio Globaltec "NADA EN IMPOSIBLE".</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="main-content">
+            <!-- Quienes Somos Section -->
+            <div class="content-section animate-on-scroll">
+                <div class="section-title">
+                    Quienes somos
+                </div>
+                <div class="section-content">
+                    <p>En el Colegio Globaltec, formamos estudiantes líderes, críticos y comprometidos con la transformación de su entorno a través de una educación moderna, inclusiva y tecnológica. Nuestro enfoque combina la excelencia académica con el desarrollo de habilidades digitales, valores humanos y pensamiento global.</p>
+                    
+                </div>
+            </div>
+
+            <!-- Video Section -->
+            <div class="content-section animate-on-scroll">
+                <div class="video-container">
+                    <div class="video-placeholder" onclick="playVideo()">
+                        <div class="play-button"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-column-section animate-on-scroll">
+            <div class="image-column">
+                <span>Imagen</span>
+            </div>
+            <div class="text-column">
+                <h2>Historia de la Institución</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit facilisis disa, finibus mauris ante felis pellentesque ultrices auctor posuere phasellus ut molestie, viverra metus felis pellentesque ultrices auctor posuere pellentesque hendrerit egestas feugiat mauris.</p>
+                <p>Pellentesque hendrerit egestas feugiat mauris ante felis pellentesque ultrices auctor posuere pellentesque ut molestie, viverra metus felis pellentesque ultrices auctor posuere pellentesque hendrerit egestas feugiat mauris.</p>
+                <p>Aenean massa facilisis distinctio consequatur lorem fermentum, vehicula auctor massa distinctio consequatur lorem fermentum dictum odio, sodales vehicula auctor massa distinctio consequatur lorem fermentum dictum odio.</p>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">01</div>
+                <h3>Innovación</h3>
+                <p>Desarrollamos soluciones tecnológicas avanzadas que se adaptan a las necesidades cambiantes del mercado actual.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">02</div>
+                <h3>Calidad</h3>
+                <p>Mantenemos los más altos estándares de calidad en todos nuestros productos y servicios.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">03</div>
+                <h3>Compromiso</h3>
+                <p>Nos comprometemos con el éxito de nuestros clientes a través de un servicio personalizado y dedicado.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Video play function
+        function playVideo() {
+            const videoContainer = document.querySelector('.video-placeholder');
+            videoContainer.innerHTML = `
+                <video controls autoplay style="width: 100%; height: 300%; object-fit: cover;">
+                    <source src="img/video.mp4" type="video/mp4">
+                    <p>Tu navegador no soporta videos HTML5.</p>
+                </video>
+            `;
+        }
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="https://www.facebook.com/share/v/1BPrFVz2zP/"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to background gradients
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.header-image, .image-column');
+            
+            parallaxElements.forEach(element => {
+                const rate = scrolled * -0.5;
+                element.style.transform = `translateY(${rate}px)`;
+            });
+        });
+
+        // Add dynamic text animation
+        function animateText() {
+            const titles = document.querySelectorAll('h1, h2, h3');
+            titles.forEach(title => {
+                const text = title.textContent;
+                title.innerHTML = '';
+                
+                text.split('').forEach((char, index) => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    span.style.animationDelay = `${index * 0.1}s`;
+                    span.style.opacity = '0';
+                    span.style.animation = 'fadeInChar 0.5s ease-out forwards';
+                    title.appendChild(span);
+                });
+            });
+        }
+
+        // Add CSS for character animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInChar {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateText, 500);
+        });
+    </script>
+
+
+     <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-placeholder">
+                        <img src="img/logo.jpeg" alt="globaltec">
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Información de contacto</h3>
+                    <div><strong>Ubicanos:</strong> Jr. Córdova 514 (frente a la  Capilla de Cruz Verde)</div>
+                    <div><strong>Teléfono:</strong>  955 630 057</div>
+                    <div><strong>Correo:</strong> aulavirtual@globaltechuanta.edu.pe</div>
+                    <div><strong>Horarios de atención:</strong></div>
+                    <div>Lunes a viernes:</div>
+                    <div>7:30am - 1:00pm</div>
+                    <div>3:00pm - 6:00pm</div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#admision">Admisión</a></li>
+                        <li><a href="#niveles">Niveles educativos</a></li>
+                        <li><a href="#actividades">Noticias o actividades</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                    <div class="social-footer">
+                        <a href="#" class="facebook" title="Facebook">f</a>
+                        <a href="#" class="tiktok" title="TikTok">♪</a>
+                        <a href="#" class="youtube" title="YouTube">▶</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Globaltec. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+</html>
+             

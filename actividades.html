@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Globaltec</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .logo img {
+           height: auto;             /* Mantiene proporciones naturales */
+           max-height: 80px;         /* Límite de altura */
+           width: auto;              /* Mantiene el ancho proporcional */
+           max-width: 160px;         /* Ajusta según tu diseño */
+           object-fit: contain;      /* Asegura que no se deforme */
+           display: block;           /* Elimina espacios extra debajo */
+        }
+        /* Navigation */
+        .nav {
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            padding: 0;
+            position: relative;
+        }
+
+        .nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #4a90e2 0%, #2c5aa0 100%);
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+
+        .nav-container {
+            position: relative;
+            z-index: 2;
+            padding: 20px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 10px 0;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-icon {
+            color: #ff5722;
+        }
+
+        .phone-icon {
+            color: #4caf50;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 30px;
+            height: 30px;
+            background: #4267B2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffeb3b;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .nav-menu li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            color: #333 !important;
+            padding: 10px 15px;
+            display: block;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .dropdown a:hover {
+            background: #f5f5f5;
+            color: #2c5aa0 !important;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        /* cuerpooooooo */
+        .contenedor-principal {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .seccion {
+            margin-bottom: 50px;
+        }
+
+        .titulo-seccion {
+            color: #3498db;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Estilos para Noticias Recientes */
+        .contenedor-noticias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tarjeta-noticia {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tarjeta-noticia:hover {
+            transform: translateY(-5px);
+        }
+
+        .imagen-noticia {
+            width: 100%;
+            height: 150px;
+            background-color: #888;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .texto-noticia {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        /* Estilos para Actividades Escolares */
+        .contenedor-actividades {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tarjeta-actividad {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .tarjeta-actividad:hover {
+            transform: translateY(-5px);
+        }
+
+        .imagen-actividad {
+            width: 100px;
+            height: 100px;
+            background-color: #888;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .contenido-actividad {
+            flex: 1;
+        }
+
+        .texto-actividad {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        /* Estilos para Galería */
+        .contenedor-galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .imagen-galeria {
+            width: 100%;
+            height: 200px;
+            background-color: #888;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .imagen-galeria:hover {
+            transform: scale(1.05);
+        }
+
+        /* Botón Ver más */
+        .boton-ver-mas {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton-ver-mas:hover {
+            background-color: #c0392b;
+        }
+
+        .contenedor-boton {
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contenedor-principal {
+                padding: 15px;
+            }
+
+            .contenedor-noticias {
+                grid-template-columns: 1fr;
+            }
+
+            .contenedor-actividades {
+                grid-template-columns: 1fr;
+            }
+
+            .tarjeta-actividad {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .imagen-actividad {
+                align-self: center;
+            }
+
+            .contenedor-galeria {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-placeholder {
+            width: 200px;
+            height: 80px;
+            background: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #4a90e2;
+        }
+
+        .social-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-footer a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .social-footer a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-footer .facebook {
+            background: #4267B2;
+        }
+
+        .social-footer .tiktok {
+            background: #000;
+        }
+
+        .social-footer .youtube {
+            background: #FF0000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 14px;
+        }
+
+
+
+        </style>
+
+        <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="logo">
+                      <img src="img/logo.jpeg" alt="Globaltec">
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon location-icon">📍</span>
+                            <span> Jr. Córdova 514 (frente a la  Capilla de Cruz Verde)</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon phone-icon">💬</span>
+                            <span>955 630 057</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/GlobalTecHuanta" title="Facebook">f</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>                       
+                    <li><a href="nivelesEdu.html">Niveles educativos</a></li>
+                    <li><a href="admision.html">Admisión</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+     <!-- cuerpo -->
+    <div class="contenedor-principal">
+        <!-- Sección Noticias Recientes -->
+        <section class="seccion">
+            <h2 class="titulo-seccion">Noticias recientes</h2>
+            <div class="contenedor-noticias">
+                <div class="tarjeta-noticia">
+                    <div class="imagen-noticia">Imagen</div>
+                    <p class="texto-noticia">
+                        Lorem ipsum dolor sit amet consectetur adipiscing elit odio, 
+                        arcu nulla porttitor lacinia risus nam felis pellentesque.
+                    </p>
+                </div>
+                <div class="tarjeta-noticia">
+                    <div class="imagen-noticia">Imagen</div>
+                    <p class="texto-noticia">
+                        Lorem ipsum dolor sit amet consectetur adipiscing elit odio, 
+                        arcu nulla porttitor lacinia risus nam felis pellentesque.
+                    </p>
+                </div>
+                <div class="tarjeta-noticia">
+                    <div class="imagen-noticia">Imagen</div>
+                    <p class="texto-noticia">
+                        Lorem ipsum dolor sit amet consectetur adipiscing elit odio, 
+                        arcu nulla porttitor lacinia risus nam felis pellentesque.
+                    </p>
+                </div>
+            </div>
+            <div class="contenedor-boton">
+                <button class="boton-ver-mas">Ver más</button>
+            </div>
+        </section>
+
+        <!-- Sección Actividades Escolares -->
+        <section class="seccion">
+            <h2 class="titulo-seccion">Actividades escolares</h2>
+            <div class="contenedor-actividades">
+                <div class="tarjeta-actividad">
+                    <div class="imagen-actividad">Imagen</div>
+                    <div class="contenido-actividad">
+                        <p class="texto-actividad">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit odio, arcu 
+                            nulla porttibus lacinia risus a neque. Tincidunt nostro nam felis 
+                            pellentesque.
+                        </p>
+                    </div>
+                </div>
+                <div class="tarjeta-actividad">
+                    <div class="imagen-actividad">Imagen</div>
+                    <div class="contenido-actividad">
+                        <p class="texto-actividad">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit odio, arcu 
+                            nulla porttibus lacinia risus a neque. Tincidunt nostro nam felis 
+                            pellentesque.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="contenedor-boton">
+                <button class="boton-ver-mas">Ver más</button>
+            </div>
+        </section>
+
+        <!-- Sección Galería -->
+        <section class="seccion">
+            <h2 class="titulo-seccion">Galería de fotos y videos</h2>
+            <div class="contenedor-galeria">
+                <div class="imagen-galeria">Imagen</div>
+                <div class="imagen-galeria">Imagen</div>
+                <div class="imagen-galeria">Imagen</div>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <h2 class="titulo-seccion">Galería de fotos y videos</h2>
+            <div class="contenedor-galeria">
+                <div class="imagen-galeria">Imagen</div>
+                <div class="imagen-galeria">Imagen</div>
+                <div class="imagen-galeria">Imagen</div>
+            </div>
+            <div class="contenedor-boton">
+                <button class="boton-ver-mas">Ver más</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Funcionalidad para los botones "Ver más"
+        document.querySelectorAll('.boton-ver-mas').forEach(boton => {
+            boton.addEventListener('click', function() {
+                alert('Funcionalidad "Ver más" - Aquí cargarías más contenido');
+            });
+        });
+
+        // Efecto hover adicional para las tarjetas
+        document.querySelectorAll('.tarjeta-noticia, .tarjeta-actividad').forEach(tarjeta => {
+            tarjeta.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 5px 20px rgba(0,0,0,0.15)';
+            });
+            
+            tarjeta.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            });
+        });
+    </script>
+
+
+
+     <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-placeholder">
+                        <img src="img/logo.jpeg" alt="globaltec">
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Información de contacto</h3>
+                    <div><strong>Ubicanos:</strong> Jr. Córdova 514 (frente a la  Capilla de Cruz Verde)</div>
+                    <div><strong>Teléfono:</strong>  955 630 057</div>
+                    <div><strong>Correo:</strong> aulavirtual@globaltechuanta.edu.pe</div>
+                    <div><strong>Horarios de atención:</strong></div>
+                    <div>Lunes a viernes:</div>
+                    <div>7:30am - 1:00pm</div>
+                    <div>3:00pm - 6:00pm</div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#admision">Admisión</a></li>
+                        <li><a href="#niveles">Niveles educativos</a></li>
+                        <li><a href="#actividades">Noticias o actividades</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                    <div class="social-footer">
+                        <a href="#" class="facebook" title="Facebook">f</a>
+                        <a href="#" class="tiktok" title="TikTok">♪</a>
+                        <a href="#" class="youtube" title="YouTube">▶</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Globaltec. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+</html>
+             

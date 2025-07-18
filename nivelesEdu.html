@@ -287,17 +287,23 @@
         }
 
         .contenedor-imagen {
-            flex: 0 0 300px;
-            height: 200px;
-            background-color: #888;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
+  flex: 0 0 300px;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden; /* Importante para que la imagen respete el borde redondeado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenedor-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Esto hace que la imagen se recorte y llene todo el contenedor */
+  display: block;
+}
+
+        
 
         @media (max-width: 768px) {
             .seccion {
@@ -488,42 +494,42 @@
         </header>
 
         <p class="descripcion-principal">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            El Colegio Gobaltec es una institución educativa innovadora que abarca los niveles inicial, primaria y secundaria, ofreciendo una propuesta pedagógica integral centrada en el desarrollo de las habilidades del siglo XXI. Desde los más pequeños hasta los adolescentes, Gobaltec busca formar líderes y ciudadanos globales, equipándolos con las herramientas necesarias para enfrentar los desafíos de un mundo en constante cambio
         </p>
 
         <div class="seccion">
             <div class="contenido-texto">
-                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <h2 class="titulo-seccion">Actividades Recreativas</h2>
                 <p class="texto-seccion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    En el nivel inicial, Gobaltec se enfoca en estimular la curiosidad, la creatividad y el aprendizaje a través del juego. Se fomenta el desarrollo de habilidades socioemocionales, el pensamiento crítico y la exploración del entorno, sentando las bases para un aprendizaje significativo y duradero.
                 </p>
             </div>
             <div class="contenedor-imagen">
-                Imagen
+                <img src="img/inicial1.jpg" alt="">
             </div>
         </div>
 
         <div class="seccion">
             <div class="contenido-texto">
-                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <h2 class="titulo-seccion"></h2>
                 <p class="texto-seccion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    A través de actividades lúdicas y experienciales, los pequeños exploran el mundo que los rodea, desarrollan sus habilidades motoras, aprenden a socializar y expresarse. Fomentamos la creatividad, el pensamiento crítico y la resolución de problemas desde una edad temprana.
                 </p>
             </div>
             <div class="contenedor-imagen">
-                Imagen
+                <img src="img/inicial3.jpeg" alt="">
             </div>
         </div>
 
         <div class="seccion">
             <div class="contenido-texto">
-                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <h2 class="titulo-seccion"></h2>
                 <p class="texto-seccion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Nuestro ambiente seguro y estimulante les permite descubrir, imaginar y construir su propio conocimiento, preparándolos de manera integral para la siguiente etapa educativa.
                 </p>
             </div>
             <div class="contenedor-imagen">
-                Imagen
+                <img src="img/inicial2.jpg" alt="">
             </div>
         </div>
          <header class="encabezado">
@@ -531,29 +537,30 @@
         </header>
 
         <p class="descripcion-principal">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Durante la primaria, la institución profundiza en el desarrollo académico, manteniendo un enfoque lúdico y participativo. Se integran metodologías activas que promueven la investigación, la resolución de problemas y el trabajo colaborativo.
+             Se enfatiza el dominio de las áreas fundamentales como matemáticas, comunicación, ciencias y tecnología, al mismo tiempo que se cultiva la creatividad y el pensamiento innovador.
         </p>
 
         <div class="seccion">
             <div class="contenido-texto">
                 <h2 class="titulo-seccion">Lorem ipsum</h2>
                 <p class="texto-seccion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Implementamos metodologías activas que incentivan la investigación, el pensamiento crítico y la resolución de problemas. Los niños se sumergen en las áreas de comunicación, matemáticas, ciencias y tecnología, no solo aprendiendo conceptos, sino también aplicándolos en proyectos y desafíos prácticos.
                 </p>
             </div>
             <div class="contenedor-imagen">
-                Imagen
+                <img src="img/primaria1.jpg" alt="">
             </div>
         </div>
         <div class="seccion">
             <div class="contenido-texto">
-                <h2 class="titulo-seccion">Lorem ipsum</h2>
+                <h2 class="titulo-seccion"></h2>
                 <p class="texto-seccion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Fomentamos el trabajo colaborativo, la creatividad y la curiosidad, asegurando que cada estudiante construya una base académica sólida mientras desarrolla su autonomía y sus talentos individuales.
                 </p>
             </div>
             <div class="contenedor-imagen">
-                Imagen
+                <img src="img/primaria3.jpg" alt="">
             </div>
         </div>
 
@@ -562,29 +569,29 @@
         </header>
 
         <p class="descripcion-principal">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            En la etapa de secundaria, Gobaltec prepara a los estudiantes para los retos académicos y profesionales futuros. El plan de estudios es riguroso e interdisciplinario, con un fuerte componente en ciencia, tecnología, ingeniería, artes y matemáticas (STEAM). Se promueve el pensamiento crítico, la capacidad de análisis y la toma de decisiones informada, además de brindar oportunidades para el desarrollo de proyectos personales y comunitarios.
         </p>
 
         <div class="seccion">
             <div class="contenido-texto">
                 <h2 class="titulo-seccion">Lorem ipsum</h2>
                 <p class="texto-seccion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Nuestro plan de estudios avanzado, con un fuerte énfasis en STEAM (Ciencia, Tecnología, Ingeniería, Artes y Matemáticas), desafía a los estudiantes a pensar críticamente, a analizar información compleja y a resolver problemas de manera innovadora. Fomentamos la investigación, el debate y la aplicación práctica del conocimiento.
                 </p>
             </div>
             <div class="contenedor-imagen">
-                Imagen
+                <img src="img/secundaria1.jpg" alt="">
             </div>
         </div>
         <div class="seccion">
             <div class="contenido-texto">
                 <h2 class="titulo-seccion">Lorem ipsum</h2>
                 <p class="texto-seccion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Además de una sólida formación académica, impulsamos el desarrollo de habilidades de liderazgo, comunicación efectiva y pensamiento global. Los jóvenes participan en proyectos desafiantes, actividades extracurriculares y se preparan para tomar decisiones informadas sobre su futuro universitario y profesional, convirtiéndose en ciudadanos conscientes y agentes de cambio.
                 </p>
             </div>
             <div class="contenedor-imagen">
-                Imagen
+                <img src="img/secundaria2.jpg" alt="">
             </div>
         </div>
     </div>

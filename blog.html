@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Colegio Globaltec</title>
+  <style>
+    /* ----- ESTILOS GENERALES ----- */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #f4f7fc;
+      color: #333;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    h1, h2, h3 {
+      color: #243b6b;
+    }
+
+    /* ----- CABECERA ----- */
+    header {
+      background-color: #1e3c72;
+      background-image: linear-gradient(to right, #2a5298, #1e3c72);
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ----- CONTENEDOR PRINCIPAL ----- */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 30px auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* ----- COLUMNA PRINCIPAL ----- */
+    main {
+      flex: 3;
+      padding: 30px;
+    }
+
+    main img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    main p {
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .subtemas ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .subtemas li {
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .subtemas li::before {
+      content: "✔";
+      color: #2a5298;
+      position: absolute;
+      left: 0;
+    }
+
+    /* ----- BARRA LATERAL ----- */
+    aside {
+      flex: 1;
+      background-color: #f0f3fa;
+      padding: 20px;
+      border-left: 3px solid #2a5298;
+    }
+
+    .widget {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+
+    .widget h3 {
+      margin-top: 0;
+      color: #2a5298;
+    }
+
+    .formulario input, .formulario button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .formulario button {
+      background-color: #2a5298;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .formulario button:hover {
+      background-color: #1e3c72;
+    }
+
+    /* ----- PIE DE PÁGINA ----- */
+    footer {
+      background-color: #1e3c72;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+
+    footer a {
+      color: #ffcc33;
+      margin: 0 10px;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      aside {
+        border-left: none;
+        border-top: 3px solid #2a5298;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <header>
+    <div class="logo">
+      <h2>🏫 Colegio Globaltec</h2>
+    </div>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Nosotros</a>
+      <a href="#">Niveles</a>
+      <a href="#">Noticias</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div class="container">
+
+    <!-- COLUMNA PRINCIPAL -->
+    <main>
+      <h1>¿Por qué elegir una educación bilingüe en Globaltec?</h1>
+      <img src="https://images.unsplash.com/photo-1600195077073-7c815f540a3b" alt="Aula Globaltec">
+      <p>En el <strong>Colegio Globaltec</strong> creemos que aprender dos idiomas abre las puertas al mundo. Nuestra propuesta educativa combina excelencia académica con enseñanza del inglés desde el nivel inicial, fomentando el pensamiento crítico y la comunicación efectiva.</p>
+
+      <p>Cada alumno desarrolla su potencial en un entorno moderno, tecnológico y humano. Además, contamos con talleres de robótica, arte, computación e inglés conversacional, diseñados para potenciar las habilidades del siglo XXI.</p>
+
+      <div class="subtemas">
+        <h3>Temas destacados:</h3>
+        <ul>
+          <li>Beneficios del aprendizaje bilingüe</li>
+          <li>Tecnología aplicada a la educación</li>
+          <li>Actividades extracurriculares</li>
+          <li>Testimonios de padres y alumnos</li>
+        </ul>
+      </div>
+    </main>
+
+    <!-- BARRA LATERAL -->
+    <aside>
+      <div class="widget">
+        <h3>Sobre Globaltec</h3>
+        <p>Colegio privado bilingüe con formación integral, tecnológica y valores humanos.</p>
+      </div>
+
+      <div class="widget formulario">
+        <h3>Suscríbete a nuestro boletín</h3>
+        <input type="text" placeholder="Tu nombre">
+        <input type="email" placeholder="Tu correo">
+        <button>Suscribirme</button>
+      </div>
+
+      <div class="widget">
+        <h3>Noticias recientes</h3>
+        <ul>
+          <li>🎓 Feria de Ciencia y Tecnología 2025</li>
+          <li>💻 Nueva aula multimedia inaugurada</li>
+          <li>🏅 Globaltec obtiene certificación Cambridge</li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h3>Síguenos</h3>
+        <p>
+          🌐 <a href="#">Facebook</a><br>
+          📸 <a href="#">Instagram</a><br>
+          🎥 <a href="#">YouTube</a>
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    © 2025 Colegio Globaltec | Todos los derechos reservados.<br>
+    <a href="#">Política de privacidad</a> | 
+    <a href="#">Términos de uso</a> | 
+    <a href="#">Contacto</a>
+  </footer>
+
+</body>
+</html>
